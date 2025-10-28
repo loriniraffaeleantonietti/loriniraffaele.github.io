@@ -11,7 +11,7 @@
         :root {
             --colore-sfondo: #1e1e1e;
             --colore-testo: #f0f0f0;
-            --colore-principale: #00bcd4; /* Un colore d'accento */
+            --colore-principale: #f1c0e8; /* Un colore d'accento */
             --colore-codice-sfondo: #282c34;
         }
 
@@ -39,7 +39,7 @@
         }
 
         h3 {
-            color: #ff9800; /* Colore per i titoletti degli esercizi */
+            color: #8eecf5; /* Colore per i titoletti degli esercizi */
             border-bottom: 2px solid #3a3a3a;
             padding-bottom: 5px;
         }
@@ -87,7 +87,7 @@
         code {
             font-family: 'Source Code Pro', monospace;
             font-size: 1em;
-            color: #4CAF50; /* Colore verde per il codice */
+            color: #fbf8cc; /* Colore verde per il codice */
         }
     </style>
 </head>
@@ -96,7 +96,7 @@
     <h1>Esercizi C++</h1>
 
     <div class="esercizio">
-        <h3>Nome dell'Esercizio (Es. 1: Calcolo Fattoriale)</h3>
+        <h3>Calcolo Fattoriale</h3>
         
         <p class="istruzioni">
             Inserisci qui le istruzioni dell'esercizio. Ad esempio:
@@ -108,16 +108,17 @@
         <div class="soluzione-codice">
             <pre><code>
 #include &lt;iostream&gt;
+using namespace std;
 
 int main() {
     int n;
-    long long fattoriale = 1;
+    long fattoriale = 1;
     
-    std::cout &lt;&lt; "Inserisci un numero intero: ";
-    std::cin &gt;&gt; n;
+    cout &lt;&lt; "Inserisci un numero intero: ";
+    cin &gt;&gt; n;
 
     if (n &lt; 0) {
-        std::cout &lt;&lt; "Errore: il fattoriale di un numero negativo non esiste." &lt;&lt; std::endl;
+        cout &lt;&lt; "Errore: il fattoriale di un numero negativo non esiste." &lt;&lt; std::endl;
     } else {
         for(int i = 1; i &lt;= n; ++i) {
             fattoriale *= i;
@@ -130,6 +131,193 @@ int main() {
             </code></pre>
         </div>
     </div>
+    
+     <div class="esercizio">
+        <h3>Calcolare la superficie di due figure</h3>
+        
+        <p class="istruzioni">
+            Scrivere un programma che riceve in input 4 numeri: base e altezza di un triangolo e base e altezza di un rettangolo. In output stampa la superficie della figura più estesa; se le due figure hanno la stessa superficie, stampare "Le due figure hanno la stessa superficie."
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+            
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+  setlocale(LC_ALL, "Italian");
+
+  int baseT = 0, altezzaT = 0, baseR = 0, altezzaR = 0, areaR = 0;
+  float areaT = 0; // dividendo per due può avere la virgola
+
+  // richiedo i dati
+  cout &lt;&lt; "Inserisci la lunghezza della base del triangolo: " &lt;&lt; endl;
+  cin &gt;&gt; baseT;
+  cout &lt;&lt; "Inserisci la lunghezza dell'altezza del triangolo: " &lt;&lt; endl;
+  cin &gt;&gt; altezzaT;
+  cout &lt;&lt; "Inserisci la lunghezza della base del rettangolo: " &lt;&lt; endl;
+  cin &gt;&gt; baseR;
+  cout &lt;&lt; "Inserisci la lunghezza dell'altezza del rettangolo: " &lt;&lt; endl;
+  cin &gt;&gt; altezzaR;
+
+  // calcolo le aree
+  areaT = (float)baseT * (float)altezzaT / 2; // faccio un cast perché divido
+  areaR = baseR * altezzaR;
+  // stampo
+  cout &lt;&lt; "Il triangolo ha superficie " &lt;&lt; areaT
+       &lt;&lt; "; il rettangolo ha superficie " &lt;&lt; areaR &lt;&lt; "." &lt;&lt; endl;
+
+  if(areaR&gt;areaT){
+    cout&lt;&lt;"Il rettangolo ha superficie maggiore.";
+  } else if (areaT&gt;areaR)
+  {
+    cout &lt;&lt;"Il triangolo ha superficie maggiore.";
+  } else cout &lt;&lt; "Le due figure hanno la stessa superficie.";
+  return 0;
+}
+
+            
+            </code></pre>
+        </div>
+    </div>
+    
+    
+    <div class="esercizio">
+        <h3>Matrice e diagonali</h3>
+        
+        <p class="istruzioni">
+           Creare una matrice 10*10 da riempire con i numeri da 0 a 99, e stamparla con delle tablature(\t) e andando correttamente a capo.
+            Dopodiché stampare le due diagonali.
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+    
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+
+  int matrice[10][10];
+  int a = 0;
+  // Riempio la matrice
+  for (int i = 0; i &lt; 10; i++) {
+
+    for (int j = 0; j &lt; 10; j++) {
+
+      matrice[i][j] = a;
+      a++;
+    }
+  }
+
+  // Stampo la matrice
+  for (int i = 0; i &lt; 10; i++) {
+
+    for (int j = 0; j &lt; 10; j++) {
+
+      cout &lt;&lt; matrice[i][j];
+      cout &lt;&lt; "\t";
+    }
+    cout &lt;&lt; "\n\n";
+  }
+
+  cout &lt;&lt; "\n\n";
+
+  // Stampo la diagonale 0,11,22,33...
+  cout &lt;&lt; "Prima diagonale: " &lt;&lt; endl;
+  for (int i = 0; i &lt; 10; i++) {
+
+    cout &lt;&lt; matrice[i][i] &lt;&lt; "\t";
+  }
+
+  cout &lt;&lt; endl;
+
+  // Stampo l'altra diagonale
+  cout &lt;&lt; "Seconda diagonale: " &lt;&lt; endl;
+  for (int i = 0; i &lt; 10; i++) {
+
+    cout &lt;&lt; matrice[i][9 - i] &lt;&lt; "\t";
+  }
+}
+
+    
+    
+            
+            </code></pre>
+        </div>
+    </div>
+    
+    
+        <div class="esercizio">
+        <h3>Le istruzioni foreach e sizeof</h3>
+        
+        <p class="istruzioni">
+           Creare un array di 10 numeri interi, chiamato numeri, che contenga i seguenti numeri: 52, 9, 20, 72, 90, 33, 27, 54, 14, 41.
+Stamparlo tutto usando foreach.
+Stampare quanti byte occupa l'intero array, e quanti ogni singolo elemento.
+
+Successivamente, creare due nuovi array di cinque numeri interi ciascuno che si chiamano num1 e num2.
+Tramite un ciclo, riempire i due nuovi array "smistando" i numeri di quello precedente: i multipli di 9 in num1 e i restanti in num2.
+
+I due array risultanti saranno quindi num1[5]={9,72,90,27,54} e num2[5]={52,20,33,14,41}.
+
+Stampare questi due array.
+
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+int main() {
+
+  int numeri[10] = {52, 9, 20, 72, 90, 33, 27, 54, 14, 41};
+  for (int i : numeri) {
+    cout &lt;&lt; i &lt;&lt; "\t";
+  }
+
+  cout &lt;&lt; endl &lt;&lt;"La dimensione dell'array è " &lt;&lt; sizeof(numeri) &lt;&lt; endl;
+  cout &lt;&lt; "La dimensione di ogni elemento è " &lt;&lt; sizeof(numeri[0]) &lt;&lt; endl;
+  int num1[5], num2[5];
+  int j = 0, k = 0;
+  for (int i = 0; i &lt; 10; i++) {
+    if (numeri[i] % 9 == 0) {
+      num1[j] = numeri[i];
+      j++;
+    } else {
+      num2[k] = numeri[i];
+      k++;
+    }
+  }
+  cout &lt;&lt; "Primo array: ";
+  for (int i = 0; i &lt; 5; i++) {
+    cout &lt;&lt; num1[i] &lt;&lt; "\t";
+  }
+  cout &lt;&lt; endl &lt;&lt; "Secondo array: ";
+  for (int i = 0; i &lt; 5; i++) {
+    cout &lt;&lt; num2[i] &lt;&lt; "\t";
+  }
+}
+
+
+
+            </code></pre>
+        </div>
+    </div>
+    
+    <!--
+    
+    TEMPLATE DA LASCIARE COMMENTATO
+    
+-->    
+    <!--
     <div class="esercizio">
         <h3>Nuovo Esercizio: [Titolo]</h3>
         
@@ -146,6 +334,7 @@ int main() {
             </code></pre>
         </div>
     </div>
+-->
     <script>
         /* Funzione JavaScript per mostrare/nascondere la soluzione */
         function toggleSoluzione(buttonElement) {
