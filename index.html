@@ -99,7 +99,6 @@
         <h3>Calcolo Fattoriale</h3>
         
         <p class="istruzioni">
-            Inserisci qui le istruzioni dell'esercizio. Ad esempio:
             Scrivi un programma in C++ che chieda all'utente di inserire un numero intero non negativo e calcoli il fattoriale di quel numero.
         </p>
 
@@ -118,12 +117,12 @@ int main() {
     cin &gt;&gt; n;
 
     if (n &lt; 0) {
-        cout &lt;&lt; "Errore: il fattoriale di un numero negativo non esiste." &lt;&lt; std::endl;
+        cout &lt;&lt; "Errore: il fattoriale di un numero negativo non esiste." &lt;&lt; endl;
     } else {
         for(int i = 1; i &lt;= n; ++i) {
             fattoriale *= i;
         }
-        std::cout &lt;&lt; "Fattoriale di " &lt;&lt; n &lt;&lt; " = " &lt;&lt; fattoriale &lt;&lt; std::endl;
+        cout &lt;&lt; "Fattoriale di " &lt;&lt; n &lt;&lt; " = " &lt;&lt; fattoriale &lt;&lt; endl;
     }
 
     return 0;
