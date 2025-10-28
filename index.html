@@ -1,9 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizi C++</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Code+Pro:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS per lo stile */
+        :root {
+            --colore-sfondo: #1e1e1e;
+            --colore-testo: #f0f0f0;
+            --colore-principale: #00bcd4; /* Un colore d'accento */
+            --colore-codice-sfondo: #282c34;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--colore-sfondo);
+            color: var(--colore-testo);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--colore-principale);
+            margin-bottom: 40px;
+        }
+
+        .esercizio {
+            background-color: #252526;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        h3 {
+            color: #ff9800; /* Colore per i titoletti degli esercizi */
+            border-bottom: 2px solid #3a3a3a;
+            padding-bottom: 5px;
+        }
+
+        .istruzioni {
+            margin-bottom: 15px;
+        }
+
+        .bottone-soluzione {
+            background-color: var(--colore-principale);
+            color: var(--colore-sfondo);
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .bottone-soluzione:hover {
+            background-color: #00838f;
+        }
+
+        .soluzione-codice {
+            display: none; /* Inizialmente nascosto */
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--colore-codice-sfondo);
+            border: 1px solid var(--colore-principale);
+            border-radius: 4px;
+        }
+        
+        /* Stile specifico per il codice C++ */
+        pre {
+            margin: 0;
+            white-space: pre-wrap; /* Mantiene la formattazione e va a capo se necessario */
+        }
+        
+        code {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1em;
+            color: #4CAF50; /* Colore verde per il codice */
+        }
+    </style>
+</head>
 <body>
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    <h1>Esercizi C++</h1>
+
+    <div class="esercizio">
+        <h3>Nome dell'Esercizio (Es. 1: Calcolo Fattoriale)</h3>
+        
+        <p class="istruzioni">
+            Inserisci qui le istruzioni dell'esercizio. Ad esempio:
+            Scrivi un programma in C++ che chieda all'utente di inserire un numero intero non negativo e calcoli il fattoriale di quel numero.
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+#include &lt;iostream&gt;
+
+int main() {
+    int n;
+    long long fattoriale = 1;
+    
+    std::cout &lt;&lt; "Inserisci un numero intero: ";
+    std::cin &gt;&gt; n;
+
+    if (n &lt; 0) {
+        std::cout &lt;&lt; "Errore: il fattoriale di un numero negativo non esiste." &lt;&lt; std::endl;
+    } else {
+        for(int i = 1; i &lt;= n; ++i) {
+            fattoriale *= i;
+        }
+        std::cout &lt;&lt; "Fattoriale di " &lt;&lt; n &lt;&lt; " = " &lt;&lt; fattoriale &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+            </code></pre>
+        </div>
+    </div>
+    <div class="esercizio">
+        <h3>Nuovo Esercizio: [Titolo]</h3>
+        
+        <p class="istruzioni">
+            [Istruzioni per l'esercizio]
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+// Inserisci qui il codice C++ della soluzione
+// Usa 'Source Code Pro' come font per il codice.
+            </code></pre>
+        </div>
+    </div>
+    <script>
+        /* Funzione JavaScript per mostrare/nascondere la soluzione */
+        function toggleSoluzione(buttonElement) {
+            // Trova l'elemento 'soluzione-codice' successivo al bottone
+            var soluzioneDiv = buttonElement.nextElementSibling; 
+
+            if (soluzioneDiv.style.display === "block") {
+                soluzioneDiv.style.display = "none";
+                buttonElement.textContent = "Mostra Soluzione";
+            } else {
+                soluzioneDiv.style.display = "block";
+                buttonElement.textContent = "Nascondi Soluzione";
+            }
+        }
+    </script>
 
 </body>
 </html>
