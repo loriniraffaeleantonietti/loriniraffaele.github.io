@@ -311,6 +311,147 @@ int main() {
         </div>
     </div>
     
+    
+    <div class="esercizio">
+        <h3>Esercizio matrice 5x5</h3>
+        
+        <p class="istruzioni">
+            Data una matrice 5x5, riempirla con valori interi casuali da 1 a 100;
+            stamparla e poi trovare prima la riga e poi la colonna con la somma maggiore.
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+#include &lt;cstdlib&gt; // Per le funzioni rand() e srand()
+#include &lt;ctime&gt;   // Per le funzioni legate al tempo, in questo caso time()
+#include &lt;iostream&gt;
+using namespace std;
+
+// Data una matrice 5x5, riempirla con valori interi casuali da 1 a 100;
+// stamparla e poi trovare prima la riga e poi la colonna con la somma maggiore.
+
+int main() {
+
+  int matrice[5][5];
+
+  srand(time(0)); // serve a rendere il random davvero random
+  // riempio coi valori casuali
+  // ciclo le righe
+  for (int i = 0; i &lt; 5; i++) {
+    // per ogni riga ciclo tutte le colonne
+    for (int j = 0; j &lt; 5; j++) {
+
+      matrice[i][j] = rand() % 100 + 1;
+    }
+  }
+
+  // adesso stampo la tabella. vado a capo una volta per riga, distanzio le
+  // colonne con \t
+  for (int i = 0; i &lt; 5; i++) {
+    for (int j = 0; j &lt; 5; j++) {
+
+      cout &lt;&lt; matrice[i][j] &lt;&lt; "\t";
+    }
+    cout &lt;&lt; "\n\n";
+  }
+  /*adesso cerco la riga con la somma maggiore
+    mi servono due variabili: per salvare quale riga e per salvare quant'è la
+    somma*/
+  int sommaMaxRiga = 0;
+  int indiceRiga = 0;
+
+  /*riga per riga, calcolo la somma, controllo con il max attuale,
+  se è maggiore aggiorno max*/
+  for (int i = 0; i &lt; 5; i++) {
+    int sommaAttuale = 0; // ogni riga torna a 0
+    for (int j = 0; j &lt; 5; j++) {
+      sommaAttuale += matrice[i][j];
+    }
+    if (sommaAttuale &gt; sommaMaxRiga) {
+      sommaMaxRiga = sommaAttuale;
+      indiceRiga = i;
+    }
+  }
+  // stampo il risultato
+  cout &lt;&lt; "La riga con la somma maggiore è la numero " &lt;&lt; indiceRiga + 1
+       &lt;&lt; ", la cui somma è " &lt;&lt; sommaMaxRiga&lt;&lt;"\n\n";
+
+
+  //simile ma non uguale, con le colonne
+  int sommaMaxCol = 0;
+  int indiceCol = 0;
+  for (int i = 0; i &lt; 5; i++) {
+    int sommaAttuale = 0; // ogni riga torna a 0
+    for (int j = 0; j &lt; 5; j++) {
+      sommaAttuale += matrice[j][i];
+    }
+    if (sommaAttuale &gt; sommaMaxCol) {
+      sommaMaxCol = sommaAttuale;
+      indiceCol = i;
+    }
+  }
+  // stampo il risultato
+  cout &lt;&lt; "La colonna con la somma maggiore è la numero " &lt;&lt; indiceCol + 1
+       &lt;&lt; ", la cui somma è " &lt;&lt; sommaMaxCol;
+  
+  
+  return 0;
+}
+
+            </code></pre>
+        </div>
+    </div>
+    
+    
+     <div class="esercizio">
+        <h3>Tabelline</h3>
+        
+        <p class="istruzioni">
+            Generare una matrice 10x10 che contenga tutte le tabelline.
+        </p>
+
+        <button class="bottone-soluzione" onclick="toggleSoluzione(this)">Mostra Soluzione</button>
+
+        <div class="soluzione-codice">
+            <pre><code>
+            #include &lt;iostream&gt;
+using namespace std;
+
+//Esercizio tabelline
+
+int main() {
+
+  int tabella[10][10];
+
+  //ciclo le righe
+  for(int i=1;i&lt;=10;i++){
+    //per ogni riga ciclo tutte le colonne
+    for(int j=1;j&lt;=10;j++){
+
+        tabella[i][j]=i*j;
+      
+    }  
+  }
+
+  //adesso stampo la tabella. vado a capo una volta per riga, distanzio le colonne con \t
+  for(int i=1;i&lt;=10;i++){
+    for(int j=1;j&lt;=10;j++){
+
+        cout&lt;&lt;tabella[i][j]&lt;&lt;"\t";
+
+    }  
+    cout&lt;&lt;endl&lt;&lt;endl;
+  }
+
+
+}
+
+            </code></pre>
+        </div>
+    </div>
+    
     <!--
     
     TEMPLATE DA LASCIARE COMMENTATO
